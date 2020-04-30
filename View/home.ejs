@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tungdzai</title>
+    <style>
+        .content {
+            margin-top: 200px;
+            text-align: center;
+        }
+
+        #submit {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        table,
+        td {
+            border: 1px solid black;
+        }
+        table.center{
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="title">
+
+        </div>
+        <div class="form-submit">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <label>Upload file excel : </label>
+                <input required type="file" name="files">
+                <br>
+                <input style="text-align: center;" type="submit" name="submit" id="submit">
+            </form>
+        </div>
+        <div class="image-gui">
+            <p>Excel format required </p>
+                <table class="center">
+                    <tr>
+                        <td>isbn</td>
+                    </tr>
+                    <tr>
+                        <td>9781424052530</td>
+                    </tr>
+                    <tr>
+                        <td>840049498</td>
+                    </tr>
+                    <tr>
+                        <td>495601667</td>
+                    </tr>
+                    <tr>
+                        <td>9781337094641</td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+</body>
+
+</html>

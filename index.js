@@ -12,7 +12,7 @@ app.set('views', './View');
 port = 3000
 
 var server = app.listen(port);
-server.timeout = 86400000
+server.timeout = 259200000
 
 let step = 0
 let totalTime

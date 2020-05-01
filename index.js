@@ -142,7 +142,8 @@ app.post('/upload', function (req, res) {
         const browser = await puppeteer.launch({ headless: true, ignoreDefaultArgs: ['--disable-extensions'] });
         let start = new Date()
         for (let index = 0; index < isbn.length; index++) {
-            await takeLinkAndImg(isbn[index], browser)
+            let item = isbn[index]
+            await takeLinkAndImg(item, browser)
         }
         await browser.close()
         let end = new Date()

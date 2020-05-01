@@ -38,8 +38,8 @@ app.post('/upload', function (req, res) {
             //take img
             let imgs = document.getElementsByClassName("s-image");
             let linkImg
+            imgs = [...imgs];
             if (imgs[0]) {
-                imgs = [...imgs];
                 linkImg = imgs[0].attributes[0].textContent.trim();
             } else {
                 linkImg = " "
@@ -47,8 +47,8 @@ app.post('/upload', function (req, res) {
             //take link 
             let linkProduct = document.getElementsByClassName('a-link-normal a-text-normal');
             let link
+            linkProduct = [...linkProduct];
             if (linkProduct[0]) {
-                linkProduct = [...linkProduct];
                 link = linkProduct[0].attributes[1].textContent;
             } else {
                 link = " "

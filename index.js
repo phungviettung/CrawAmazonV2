@@ -66,7 +66,7 @@ app.post('/upload', function (req, res) {
                 //take title 
                 let title = document.getElementById("productTitle");
                 let contentTitle
-                if (title) {
+                if (title !== null) {
                     contentTitle = title.textContent.trim()
                 } else {
                     contentTitle = " "
@@ -74,7 +74,7 @@ app.post('/upload', function (req, res) {
                 //take edition
                 let subTitle = document.getElementById("productSubtitle");
                 let contentSubtitle;
-                if (subTitle) {
+                if (subTitle !== null) {
                     contentSubtitle = subTitle.textContent.trim()
                 } else {
                     contentSubtitle = " "
@@ -88,12 +88,16 @@ app.post('/upload', function (req, res) {
                     contentPrice = " "
                 }
                 // take description
-                let description = document.getElementById("bookDesc_iframe");
-                if (description) {
-                    contentDes = description.contentWindow.document.getElementById("iframeContent").textContent;
+
+               
+                let description = document.getElementById("bookDesc_iframe"); console.log(description)
+                if (description !== null) {
+                    let temp = description.contentWindow.document.getElementById("iframeContent");
+                    if (temp !== null) { contentDes = temp.textContent } else{ contentDes = ' ' }
                 } else {
-                    contentDes = " "
-                }
+                    contentDes = ' '
+                } 
+
                 //take author
                 let author = document.getElementsByClassName("a-link-normal contributorNameID");
                 if (author[0]) {
@@ -147,8 +151,8 @@ app.post('/upload', function (req, res) {
         }
         await browser.close()
         let end = new Date()
-        totalTime = (end.getTime()-start.getTime())/60000
-        console.log("Tổng thời gian thực hiện " + totalTime + 'minutes' )
+        totalTime = (end.getTime() - start.getTime()) / 60000
+        console.log("Tổng thời gian thực hiện " + totalTime + 'minutes')
     }
 
     //write file 
@@ -160,7 +164,7 @@ app.post('/upload', function (req, res) {
             0,
             filename.lastIndexOf(".")
         )
-        filename = filename+ '.csv'
+        filename = filename + '.csv'
         linkFileExport = __dirname + '/Public/Result/' + filename
         XLSX.writeFile(wb, linkFileExport)
     }

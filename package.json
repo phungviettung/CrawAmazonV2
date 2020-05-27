@@ -12,14 +12,17 @@
     "cors": "^2.8.5",
     "csv-writer": "^1.6.0",
     "ejs": "^3.0.2",
+    "email-existence": "^0.1.6",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.3",
     "formidable": "^1.2.2",
+    "kickbox": "^2.0.4",
     "lodash": "^4.17.15",
     "morgan": "^1.10.0",
+    "puppeteer": "^3.0.2",
     "read-excel-file": "^4.0.6",
     "request": "^2.88.2",
-    "xlsx": "^0.15.6",
-    "puppeteer": "^3.0.2"
+    "shelljs": "^0.8.4",
+    "xlsx": "^0.15.6"
   }
 }

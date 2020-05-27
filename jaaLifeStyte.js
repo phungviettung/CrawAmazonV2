@@ -6,7 +6,7 @@ let dir = __dirname + '/Public/Import/email/info_finish.xlsx'
 const workbook = XLSX.readFile(dir)
 const sheetNameList = workbook.SheetNames
 const dataFromWorkbook = XLSX.utils.sheet_to_json(workbook.Sheets[sheetNameList[0]])
-console.log(dataFromWorkbook)
+// console.log(dataFromWorkbook)
 const fillData = async function (info, browser) {
     const page = await browser.newPage();
     page.setViewport({ width: 1280, height: 720 });
@@ -30,7 +30,7 @@ const fillData = async function (info, browser) {
 }
 
 const execute = async () => {
-    const browser = await puppeteer.launch({ headless: false, args: ['--proxy-server=socks5://127.0.0.1:9050'] });
+    const browser = await puppeteer.launch({ headless: true, args: ['--proxy-server=socks5://127.0.0.1:9050'] });
     for (let index = 0; index < dataFromWorkbook.length; index++) {
         let temp = dataFromWorkbook[index]
         await fillData(temp, browser).then(() => {

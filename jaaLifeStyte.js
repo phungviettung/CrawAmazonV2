@@ -9,7 +9,7 @@ const dataFromWorkbook = XLSX.utils.sheet_to_json(workbook.Sheets[sheetNameList[
 // console.log(dataFromWorkbook)
 const fillData = async function (info, browser) {
     const page = await browser.newPage();
-    // page.setViewport({ width: 1280, height: 720 });
+    page.setViewport({ width: 1280, height: 720 });
     await page.goto('https://secure.jaalifestyle.com/ref/tungpv', { waitUntil: 'networkidle2', timeout: 0 })
     await page.evaluate((info) => {
         document.getElementById('full_name').value = info.fullname
@@ -30,12 +30,12 @@ const fillData = async function (info, browser) {
 }
 
 const execute = async () => {
-    const browser = await puppeteer.launch({ headless: false, args: ['--proxy-server=socks5://127.0.0.1:60000', '--no-sandbox'] });
+    const browser = await puppeteer.launch({ headless: true, args: ['--proxy-server=socks5://127.0.0.1:60000', '--no-sandbox'] });
     for (let index = 0; index < dataFromWorkbook.length; index++) {
         let temp = dataFromWorkbook[index]
         await fillData(temp, browser).then(async () => {
             await shell.exec('systemctl restart tor');
-            // await shell.exec('curl --socks5 localhost:9050 --socks5-hostname localhost:9050 -s https://api.ipify.org/');
+            await shell.exec('curl --socks5 localhost:9050 --socks5-hostname localhost:9050 -s https://api.ipify.org/');
             console.log('xong thang ' + index + 'la: ' + temp.usename)
         }).catch(() => {
             console.log('!!error thang ' + index + 'la: ' + temp.usename)
